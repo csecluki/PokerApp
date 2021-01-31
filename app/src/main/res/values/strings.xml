@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">PokerApp</string>
+
+    <!-- DESCRIPTIONS -->
+    <string name="themeDesc">App main theme</string>
+
+    <!-- BUTTON TEXT -->
+    <string name="search">Search</string>
+    <string name="stop">Stop</string>
+    <string name="request">Request</string>
+    <string name="join_room">Join Room</string>
+    <string name="start_game">Start Game</string>
+    <string name="send">Send</string>
+    <string name="available_peers">Available peers:</string>
+    <string name="group_members">Group members:</string>
+
+</resources>
