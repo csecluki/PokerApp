@@ -8,9 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="btn_enabled">#287300</color>
+    <color name="btn_enabled">#CA6726</color>
     <color name="btn_disabled">#555555</color>
-    <color name="btn_text">#888888</color>
+    <color name="btn_text">#424242</color>
 
-    <color name="listView">#1C4A12</color>
+    <color name="listView">#316327</color>
+
+    <color name="labels">#E6BF49</color>
 </resources>

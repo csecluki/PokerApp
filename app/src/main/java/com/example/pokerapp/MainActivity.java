@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btnSend, btnRoom;
     private ListView listViewPeers;
+    private EditText editTextMessage;
 
     private WifiP2pManager manager;
     private WifiP2pManager.Channel channel;
@@ -36,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
     private IntentFilter intentFilter;
 
     private Handler handler;
+    private boolean isClient = true;
+    private Server server;
+    private Client client;
 
     private final ArrayList<WifiP2pDevice> peerArrayList = new ArrayList<>();
     private WifiP2pDevice[] deviceArray;
@@ -55,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         btnSend.setEnabled(false);
         listViewPeers = findViewById(R.id.listViewPeers);
 //        listViewConnectedDevices = findViewById(R.id.listViewConnectedDevices);
+        editTextMessage = findViewById(R.id.editTextMessage);
 
         manager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
         channel = manager.initialize(this, getMainLooper(), null);
@@ -131,6 +137,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnSend.setOnClickListener(view -> {
+            if (isClient) {
+                client.sendMessage(editTextMessage.getText().toString());
+            } else {
+                server.broadcastMessage(editTextMessage.getText().toString());
+            }
         });
     }
 
@@ -161,25 +172,21 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-//    WifiP2pManager.GroupInfoListener groupInfoListener = new WifiP2pManager.GroupInfoListener() {
-//        @Override
-//        public void onGroupInfoAvailable(WifiP2pGroup wifiP2pGroup) {
-//        }
-//    };
-
     WifiP2pManager.ConnectionInfoListener connectionInfoListener = new WifiP2pManager.ConnectionInfoListener() {
         @Override
         public void onConnectionInfoAvailable(WifiP2pInfo wifiP2pInfo) {
             InetAddress groupOwnerAddress = wifiP2pInfo.groupOwnerAddress;
             if (wifiP2pInfo.groupFormed) {
                 if (wifiP2pInfo.isGroupOwner) {
-                    ServerHolder.setServer(new Server(handler, getApplicationContext()));
-                    new Thread(ServerHolder.getServer()).start();
+                    isClient = false;
+                    server = new Server(handler, getApplicationContext());
+                    new Thread(server).start();
+                    ServerHolder.setServer(server);
                     btnRoom.setText(R.string.start_game);
-
                 } else {
-                    ClientHolder.setClient(new Client(groupOwnerAddress, handler, getApplicationContext(), MainActivity.this));
-                    new Thread(ClientHolder.getClient()).start();
+                    client = new Client(groupOwnerAddress, handler, getApplicationContext(), MainActivity.this);
+                    new Thread(client).start();
+                    ClientHolder.setClient(client);
                 }
                 btnSend.setEnabled(true);
                 btnRoom.setEnabled(true);
