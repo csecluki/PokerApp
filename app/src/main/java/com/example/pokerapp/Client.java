@@ -59,9 +59,10 @@ public class Client implements Runnable {
                     if (msg != null && !(msg.isEmpty())) {
                         String finalMsg = msg;
                         if (msg.equals("/goToRoom")) {
-                            mainActivity.launchRoomActivity();
+                            mainActivity.launchGameRoomActivity();
+                        } else {
+                            handler.post(() -> Toast.makeText(context, finalMsg, Toast.LENGTH_SHORT).show());
                         }
-                        handler.post(() -> Toast.makeText(context, finalMsg, Toast.LENGTH_SHORT).show());
                     }
                 }
             } catch (IOException e) {

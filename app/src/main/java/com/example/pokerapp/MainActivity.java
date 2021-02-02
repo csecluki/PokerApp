@@ -8,6 +8,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.wifi.p2p.WifiP2pConfig;
@@ -17,6 +18,7 @@ import android.net.wifi.p2p.WifiP2pInfo;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -136,6 +138,16 @@ public class MainActivity extends AppCompatActivity {
             });
         });
 
+        btnRoom.setOnClickListener(view -> {
+            try {
+                server.broadcastMessage("/goToRoom");
+            } catch (NullPointerException e) {
+                assert true;
+            } finally {
+                launchGameRoomActivity();
+            }
+        });
+
         btnSend.setOnClickListener(view -> {
             if (isClient) {
                 client.sendMessage(editTextMessage.getText().toString());
@@ -183,13 +195,13 @@ public class MainActivity extends AppCompatActivity {
                     new Thread(server).start();
                     ServerHolder.setServer(server);
                     btnRoom.setText(R.string.start_game);
+                    btnRoom.setEnabled(true);
                 } else {
                     client = new Client(groupOwnerAddress, handler, getApplicationContext(), MainActivity.this);
                     new Thread(client).start();
                     ClientHolder.setClient(client);
                 }
                 btnSend.setEnabled(true);
-                btnRoom.setEnabled(true);
             }
         }
     };
@@ -227,5 +239,7 @@ public class MainActivity extends AppCompatActivity {
         unregisterReceiver(broadcastReceiver);
     }
 
-    public void launchRoomActivity() {}
+    public void launchGameRoomActivity() {
+        startActivity(new Intent(this, GameRoomActivity.class));
+    }
 }
