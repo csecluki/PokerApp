@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameRoomActivity">
+    tools:context=".GameRoomActivity"
+    android:focusableInTouchMode="true">
 
     <ImageView
         android:layout_width="match_parent"
@@ -12,6 +13,74 @@
         android:src="@drawable/theme"
         android:scaleType="fitXY"
         android:contentDescription="@string/themeDesc" />
+
+    <Button
+        android:id="@+id/btnCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/btn_check"
+        android:text="@string/check"
+        android:textColor="@color/btn_text"
+        android:layout_toStartOf="@+id/btnCall"
+        android:layout_alignBaseline="@+id/btnCall"
+        tools:ignore="RelativeOverlap" />
+
+    <Button
+        android:id="@+id/btnCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/btn_call"
+        android:text="@string/call"
+        android:textColor="@color/btn_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
+
+    <Button
+        android:id="@+id/btnRaise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/btn_raise"
+        android:text="@string/raise"
+        android:textColor="@color/btn_text"
+        android:layout_toEndOf="@+id/btnCall"
+        android:layout_alignBaseline="@+id/btnCall"/>
+
+    <Button
+        android:id="@+id/btnFold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/btn_fold"
+        android:text="@string/fold"
+        android:textColor="@color/btn_text"
+        android:layout_below="@+id/btnCheck"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="16dp"/>
+
+    <Button
+        android:id="@+id/btnAllIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/btn_all_in"
+        android:text="@string/all_in"
+        android:textColor="@color/btn_text"
+        android:layout_toEndOf="@+id/btnFold"
+        android:layout_alignBaseline="@+id/btnFold"/>
+
+    <ImageView
+        android:id="@+id/card1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/c2"
+        android:layout_below="@id/btnFold"/>
+
+    <ImageView
+        android:id="@+id/card2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/c3"
+        android:layout_below="@id/card1"/>
 
     <EditText
         android:id="@+id/editTextMessage"

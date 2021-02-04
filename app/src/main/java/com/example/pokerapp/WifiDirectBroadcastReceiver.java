@@ -48,6 +48,8 @@ public class WifiDirectBroadcastReceiver extends BroadcastReceiver {
         // respond to new connection or disconnection
         else if (WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION.equals(action)) {
             NetworkInfo networkInfo = intent.getParcelableExtra(WifiP2pManager.EXTRA_NETWORK_INFO);
+//            String group = intent.getParcelableExtra(WifiP2pManager.EXTRA_WIFI_P2P_GROUP);
+//            String p2pInfo = intent.getParcelableExtra(WifiP2pManager.EXTRA_WIFI_P2P_GROUP);
             if (networkInfo.isConnected()) {
                 manager.requestConnectionInfo(channel, mainActivity.connectionInfoListener);
             }

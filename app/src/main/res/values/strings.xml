@@ -13,5 +13,10 @@
     <string name="send">Send</string>
     <string name="available_peers">Available peers:</string>
     <string name="group_members">Group members:</string>
+    <string name="fold">Fold</string>
+    <string name="check">Check</string>
+    <string name="call">Call</string>
+    <string name="raise">Raise</string>
+    <string name="all_in">AllIn</string>
 
 </resources>

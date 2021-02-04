@@ -12,6 +12,12 @@
     <color name="btn_disabled">#555555</color>
     <color name="btn_text">#424242</color>
 
+    <color name="btn_check">#DF6100</color>
+    <color name="btn_call">#008DEC</color>
+    <color name="btn_raise">#44B100</color>
+    <color name="btn_fold">#DD0000</color>
+    <color name="btn_all_in">#CCC100</color>
+
     <color name="listView">#316327</color>
 
     <color name="labels">#E6BF49</color>

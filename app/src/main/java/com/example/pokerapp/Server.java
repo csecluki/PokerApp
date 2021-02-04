@@ -66,6 +66,7 @@ public class Server implements Runnable {
                 while ((msg = in.readLine()) != null) {
                     if (!msg.isEmpty()) {
                         String finalMsg = msg;
+                        sender.broadcastMessage(msg);
                         handler.post(() -> Toast.makeText(context, finalMsg, Toast.LENGTH_SHORT).show());
                     }
                 }

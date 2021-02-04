@@ -189,19 +189,22 @@ public class MainActivity extends AppCompatActivity {
         public void onConnectionInfoAvailable(WifiP2pInfo wifiP2pInfo) {
             InetAddress groupOwnerAddress = wifiP2pInfo.groupOwnerAddress;
             if (wifiP2pInfo.groupFormed) {
-                if (wifiP2pInfo.isGroupOwner) {
-                    isClient = false;
-                    server = new Server(handler, getApplicationContext());
-                    new Thread(server).start();
-                    ServerHolder.setServer(server);
-                    btnRoom.setText(R.string.start_game);
-                    btnRoom.setEnabled(true);
-                } else {
-                    client = new Client(groupOwnerAddress, handler, getApplicationContext(), MainActivity.this);
-                    new Thread(client).start();
-                    ClientHolder.setClient(client);
+                if (server == null && client == null) {
+                    Toast.makeText(getApplicationContext(), "Im here", Toast.LENGTH_SHORT).show();
+                    if (wifiP2pInfo.isGroupOwner) {
+                        isClient = false;
+                        server = new Server(handler, getApplicationContext());
+                        new Thread(server).start();
+                        ServerHolder.setServer(server);
+                        btnRoom.setText(R.string.start_game);
+                        btnRoom.setEnabled(true);
+                    } else {
+                        client = new Client(groupOwnerAddress, handler, getApplicationContext(), MainActivity.this);
+                        new Thread(client).start();
+                        ClientHolder.setClient(client);
+                    }
+                    btnSend.setEnabled(true);
                 }
-                btnSend.setEnabled(true);
             }
         }
     };
@@ -238,6 +241,7 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         unregisterReceiver(broadcastReceiver);
     }
+
 
     public void launchGameRoomActivity() {
         startActivity(new Intent(this, GameRoomActivity.class));
