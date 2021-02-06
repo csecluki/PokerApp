@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GameRoomActivity"
     android:focusableInTouchMode="true">
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
 
     <ImageView
         android:layout_width="match_parent"
@@ -56,7 +56,7 @@
         android:textColor="@color/btn_text"
         android:layout_below="@+id/btnCheck"
         android:layout_centerInParent="true"
-        android:layout_marginRight="16dp"/>
+        android:layout_marginEnd="16dp"/>
 
     <Button
         android:id="@+id/btnAllIn"
@@ -73,14 +73,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/c2"
-        android:layout_below="@id/btnFold"/>
+        android:layout_below="@id/btnFold"
+        android:contentDescription="@string/player_s_first_card" />
 
     <ImageView
         android:id="@+id/card2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/c3"
-        android:layout_below="@id/card1"/>
+        android:layout_below="@id/card1"
+        android:contentDescription="@string/player_s_second_card" />
 
     <EditText
         android:id="@+id/editTextMessage"
@@ -89,7 +91,8 @@
         android:layout_alignBaseline="@id/btnSend"
         android:layout_marginStart="16dp"
         android:autofillHints="no"
-        android:inputType="text" />
+        android:inputType="text"
+        tools:ignore="LabelFor" />
 
     <Button
         android:id="@+id/btnSend"
@@ -101,6 +104,7 @@
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/btn_bg_color"
         android:text="@string/send"
-        android:textColor="@color/btn_text" />
+        android:textColor="@color/btn_text"
+        tools:ignore="RelativeOverlap" />
 
 </RelativeLayout>

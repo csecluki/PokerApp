@@ -18,7 +18,6 @@ import android.net.wifi.p2p.WifiP2pInfo;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,8 +40,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Handler handler;
     private boolean isClient = true;
-    private Server server;
-    private Client client;
+    private Player player;
+//    private Server server;
+//    private Client client;
 
     private final ArrayList<WifiP2pDevice> peerArrayList = new ArrayList<>();
     private WifiP2pDevice[] deviceArray;
@@ -63,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
         listViewPeers = findViewById(R.id.listViewPeers);
 //        listViewConnectedDevices = findViewById(R.id.listViewConnectedDevices);
         editTextMessage = findViewById(R.id.editTextMessage);
+
+        player = new Player();
+        PlayerHolder.setPlayer(player);
 
         manager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
         channel = manager.initialize(this, getMainLooper(), null);
@@ -140,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnRoom.setOnClickListener(view -> {
             try {
-                server.broadcastMessage("/goToRoom");
+                player.getServer().broadcastMessage("/goToRoom");
             } catch (NullPointerException e) {
                 assert true;
             } finally {
@@ -150,10 +153,11 @@ public class MainActivity extends AppCompatActivity {
 
         btnSend.setOnClickListener(view -> {
             if (isClient) {
-                client.sendMessage(editTextMessage.getText().toString());
+                player.getClient().sendMessage(editTextMessage.getText().toString());
             } else {
-                server.broadcastMessage(editTextMessage.getText().toString());
+                player.getServer().broadcastMessage(editTextMessage.getText().toString());
             }
+            editTextMessage.setText("");
         });
     }
 
@@ -188,20 +192,20 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onConnectionInfoAvailable(WifiP2pInfo wifiP2pInfo) {
             InetAddress groupOwnerAddress = wifiP2pInfo.groupOwnerAddress;
+            Toast.makeText(getApplicationContext(), "Im here", Toast.LENGTH_SHORT).show();
             if (wifiP2pInfo.groupFormed) {
-                if (server == null && client == null) {
-                    Toast.makeText(getApplicationContext(), "Im here", Toast.LENGTH_SHORT).show();
+                if (player.getServer() == null && player.getClient() == null) {
                     if (wifiP2pInfo.isGroupOwner) {
                         isClient = false;
-                        server = new Server(handler, getApplicationContext());
+                        Server server = new Server(handler, getApplicationContext());
                         new Thread(server).start();
-                        ServerHolder.setServer(server);
+                        player.setServer(server);
                         btnRoom.setText(R.string.start_game);
                         btnRoom.setEnabled(true);
                     } else {
-                        client = new Client(groupOwnerAddress, handler, getApplicationContext(), MainActivity.this);
+                        Client client = new Client(groupOwnerAddress, handler, getApplicationContext(), MainActivity.this);
                         new Thread(client).start();
-                        ClientHolder.setClient(client);
+                        player.setClient(client);
                     }
                     btnSend.setEnabled(true);
                 }

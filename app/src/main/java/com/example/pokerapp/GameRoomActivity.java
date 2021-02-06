@@ -10,8 +10,7 @@ public class GameRoomActivity extends AppCompatActivity {
 
     private EditText editTextMessage;
 
-    private Server server;
-    private Client client;
+    private Player player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,22 +20,14 @@ public class GameRoomActivity extends AppCompatActivity {
         Button btnSend = findViewById(R.id.btnSend);
         editTextMessage = findViewById(R.id.editTextMessage);
 
-        loadData();
+        player = PlayerHolder.getPlayer();
 
         btnSend.setOnClickListener(view -> {
             try {
-                client.sendMessage(editTextMessage.getText().toString());
+                player.getClient().sendMessage(editTextMessage.getText().toString());
             } catch (NullPointerException e){
-                server.broadcastMessage(editTextMessage.getText().toString());
+                player.getServer().broadcastMessage(editTextMessage.getText().toString());
             }
         });
-    }
-
-    private void loadData() {
-        if (ClientHolder.getClient() != null) {
-            client = ClientHolder.getClient();
-        } else {
-            server = ServerHolder.getServer();
-        }
     }
 }
