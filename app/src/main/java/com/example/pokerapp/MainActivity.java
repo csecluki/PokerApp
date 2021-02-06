@@ -10,6 +10,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.net.wifi.p2p.WifiP2pConfig;
 import android.net.wifi.p2p.WifiP2pDevice;
@@ -41,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
     private Handler handler;
     private boolean isClient = true;
     private Player player;
-//    private Server server;
-//    private Client client;
 
     private final ArrayList<WifiP2pDevice> peerArrayList = new ArrayList<>();
     private WifiP2pDevice[] deviceArray;
@@ -52,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         Button btnStartDiscovering = findViewById(R.id.btnStartDiscovering);
         Button btnStopDiscovering = findViewById(R.id.btnStopDiscovering);
@@ -152,10 +152,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnSend.setOnClickListener(view -> {
+            String msg = editTextMessage.getText().toString();
             if (isClient) {
-                player.getClient().sendMessage(editTextMessage.getText().toString());
+                player.getClient().sendMessage(msg);
             } else {
-                player.getServer().broadcastMessage(editTextMessage.getText().toString());
+                player.getServer().broadcastMessage(msg);
             }
             editTextMessage.setText("");
         });
@@ -238,6 +239,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         registerReceiver(broadcastReceiver, intentFilter);
+        player = PlayerHolder.getPlayer();
     }
 
     @Override
