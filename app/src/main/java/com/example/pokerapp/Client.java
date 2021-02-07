@@ -10,6 +10,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Client implements Runnable {
 
@@ -22,6 +24,8 @@ public class Client implements Runnable {
     private final Handler handler;
     private final Context context;
     private final MainActivity mainActivity;
+
+    private final ArrayList<String> playerNameList = new ArrayList<>();
 
     public Client(InetAddress inetAddress, Handler handler, Context context, MainActivity mainActivity) {
         this.inetAddress = inetAddress;
@@ -60,6 +64,11 @@ public class Client implements Runnable {
                         String finalMsg = msg;
                         if (msg.equals("/goToRoom")) {
                             mainActivity.launchGameRoomActivity();
+                        } else if (msg.startsWith("/nameList")) {
+                            msg = msg.substring(10);
+                            playerNameList.clear();
+                            playerNameList.addAll(Arrays.asList(msg.split(" ")));
+                            handler.post(() -> mainActivity.setPlayerNameList(playerNameList));
                         } else {
                             handler.post(() -> Toast.makeText(context, finalMsg, Toast.LENGTH_SHORT).show());
                         }

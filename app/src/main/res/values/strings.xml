@@ -18,5 +18,7 @@
     <string name="call">Call</string>
     <string name="raise">Raise</string>
     <string name="all_in">AllIn</string>
+    <string name="player_s_first_card">Player\'s first card</string>
+    <string name="player_s_second_card">Player\'s second card</string>
 
 </resources>

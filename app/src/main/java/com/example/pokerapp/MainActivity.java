@@ -10,6 +10,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.net.wifi.p2p.WifiP2pConfig;
 import android.net.wifi.p2p.WifiP2pDevice;
@@ -18,7 +19,6 @@ import android.net.wifi.p2p.WifiP2pInfo;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,7 +31,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnSend, btnRoom;
-    private ListView listViewPeers;
+    private ListView listViewPeers, listViewConnectedDevices;
     private EditText editTextMessage;
 
     private WifiP2pManager manager;
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         Button btnStartDiscovering = findViewById(R.id.btnStartDiscovering);
         Button btnStopDiscovering = findViewById(R.id.btnStopDiscovering);
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         btnSend = findViewById(R.id.btnSend);
         btnSend.setEnabled(false);
         listViewPeers = findViewById(R.id.listViewPeers);
-//        listViewConnectedDevices = findViewById(R.id.listViewConnectedDevices);
+        listViewConnectedDevices = findViewById(R.id.listViewConnectedDevices);
         editTextMessage = findViewById(R.id.editTextMessage);
 
         manager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
@@ -154,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 server.broadcastMessage(editTextMessage.getText().toString());
             }
+            editTextMessage.setText("");
         });
     }
 
@@ -190,10 +192,9 @@ public class MainActivity extends AppCompatActivity {
             InetAddress groupOwnerAddress = wifiP2pInfo.groupOwnerAddress;
             if (wifiP2pInfo.groupFormed) {
                 if (server == null && client == null) {
-                    Toast.makeText(getApplicationContext(), "Im here", Toast.LENGTH_SHORT).show();
                     if (wifiP2pInfo.isGroupOwner) {
                         isClient = false;
-                        server = new Server(handler, getApplicationContext());
+                        server = new Server(handler, getApplicationContext(), MainActivity.this);
                         new Thread(server).start();
                         ServerHolder.setServer(server);
                         btnRoom.setText(R.string.start_game);
@@ -242,8 +243,20 @@ public class MainActivity extends AppCompatActivity {
         unregisterReceiver(broadcastReceiver);
     }
 
+    public void updateListViewConnectedDevices(ArrayList<String> playerNameList) {
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
+                getApplicationContext(),
+                android.R.layout.simple_list_item_1,
+                playerNameList
+        );
+        listViewConnectedDevices.setAdapter(arrayAdapter);
+    }
 
     public void launchGameRoomActivity() {
         startActivity(new Intent(this, GameRoomActivity.class));
+    }
+
+    public void setPlayerNameList(ArrayList<String> playerNameList) {
+        updateListViewConnectedDevices(playerNameList);
     }
 }
