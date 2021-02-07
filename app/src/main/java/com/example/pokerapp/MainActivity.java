@@ -31,7 +31,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnSend, btnRoom;
-    private ListView listViewPeers;
+    private ListView listViewPeers, listViewConnectedDevices;
     private EditText editTextMessage;
 
     private WifiP2pManager manager;
@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Handler handler;
     private boolean isClient = true;
-    private Player player;
+    private Server server;
+    private Client client;
 
     private final ArrayList<WifiP2pDevice> peerArrayList = new ArrayList<>();
     private WifiP2pDevice[] deviceArray;
@@ -61,11 +62,8 @@ public class MainActivity extends AppCompatActivity {
         btnSend = findViewById(R.id.btnSend);
         btnSend.setEnabled(false);
         listViewPeers = findViewById(R.id.listViewPeers);
-//        listViewConnectedDevices = findViewById(R.id.listViewConnectedDevices);
+        listViewConnectedDevices = findViewById(R.id.listViewConnectedDevices);
         editTextMessage = findViewById(R.id.editTextMessage);
-
-        player = new Player();
-        PlayerHolder.setPlayer(player);
 
         manager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
         channel = manager.initialize(this, getMainLooper(), null);
@@ -143,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnRoom.setOnClickListener(view -> {
             try {
-                player.getServer().broadcastMessage("/goToRoom");
+                server.broadcastMessage("/goToRoom");
             } catch (NullPointerException e) {
                 assert true;
             } finally {
@@ -152,11 +150,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnSend.setOnClickListener(view -> {
-            String msg = editTextMessage.getText().toString();
             if (isClient) {
-                player.getClient().sendMessage(msg);
+                client.sendMessage(editTextMessage.getText().toString());
             } else {
-                player.getServer().broadcastMessage(msg);
+                server.broadcastMessage(editTextMessage.getText().toString());
             }
             editTextMessage.setText("");
         });
@@ -193,20 +190,19 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onConnectionInfoAvailable(WifiP2pInfo wifiP2pInfo) {
             InetAddress groupOwnerAddress = wifiP2pInfo.groupOwnerAddress;
-            Toast.makeText(getApplicationContext(), "Im here", Toast.LENGTH_SHORT).show();
             if (wifiP2pInfo.groupFormed) {
-                if (player.getServer() == null && player.getClient() == null) {
+                if (server == null && client == null) {
                     if (wifiP2pInfo.isGroupOwner) {
                         isClient = false;
-                        Server server = new Server(handler, getApplicationContext());
+                        server = new Server(handler, getApplicationContext(), MainActivity.this);
                         new Thread(server).start();
-                        player.setServer(server);
+                        ServerHolder.setServer(server);
                         btnRoom.setText(R.string.start_game);
                         btnRoom.setEnabled(true);
                     } else {
-                        Client client = new Client(groupOwnerAddress, handler, getApplicationContext(), MainActivity.this);
+                        client = new Client(groupOwnerAddress, handler, getApplicationContext(), MainActivity.this);
                         new Thread(client).start();
-                        player.setClient(client);
+                        ClientHolder.setClient(client);
                     }
                     btnSend.setEnabled(true);
                 }
@@ -239,7 +235,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         registerReceiver(broadcastReceiver, intentFilter);
-        player = PlayerHolder.getPlayer();
     }
 
     @Override
@@ -248,8 +243,20 @@ public class MainActivity extends AppCompatActivity {
         unregisterReceiver(broadcastReceiver);
     }
 
+    public void updateListViewConnectedDevices(ArrayList<String> playerNameList) {
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
+                getApplicationContext(),
+                android.R.layout.simple_list_item_1,
+                playerNameList
+        );
+        listViewConnectedDevices.setAdapter(arrayAdapter);
+    }
 
     public void launchGameRoomActivity() {
         startActivity(new Intent(this, GameRoomActivity.class));
+    }
+
+    public void setPlayerNameList(ArrayList<String> playerNameList) {
+        updateListViewConnectedDevices(playerNameList);
     }
 }

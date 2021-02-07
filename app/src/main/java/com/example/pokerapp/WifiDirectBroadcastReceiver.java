@@ -31,10 +31,8 @@ public class WifiDirectBroadcastReceiver extends BroadcastReceiver {
             int state = intent.getIntExtra(WifiP2pManager.EXTRA_WIFI_STATE, -1);
             if (state == WifiP2pManager.WIFI_P2P_STATE_ENABLED) {
                 Log.d("WiFi", "WiFi on");
-//                    Toast.makeText(mainActivity.getApplicationContext(), "Connected to WiFi", Toast.LENGTH_SHORT).show();
             } else {
                 Log.d("WiFi", "WiFi off");
-//                    Toast.makeText(mainActivity.getApplicationContext(), "WiFi is off", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -48,11 +46,7 @@ public class WifiDirectBroadcastReceiver extends BroadcastReceiver {
         // respond to new connection or disconnection
         else if (WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION.equals(action)) {
             NetworkInfo networkInfo = intent.getParcelableExtra(WifiP2pManager.EXTRA_NETWORK_INFO);
-            Log.d("Conn", "Checking...");
-//            String group = intent.getParcelableExtra(WifiP2pManager.EXTRA_WIFI_P2P_GROUP);
-//            String p2pInfo = intent.getParcelableExtra(WifiP2pManager.EXTRA_WIFI_P2P_GROUP);
             if (networkInfo.isConnected()) {
-                Log.d("Conn", "There's a connection");
                 manager.requestConnectionInfo(channel, mainActivity.connectionInfoListener);
             }
         }
