@@ -14,97 +14,268 @@
         android:scaleType="fitXY"
         android:contentDescription="@string/themeDesc" />
 
-    <Button
-        android:id="@+id/btnCheck"
+    <RelativeLayout
+        android:id="@+id/layoutPlayers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/btn_check"
-        android:text="@string/check"
-        android:textColor="@color/btn_text"
-        android:layout_toStartOf="@+id/btnCall"
-        android:layout_alignBaseline="@+id/btnCall"
-        tools:ignore="RelativeOverlap" />
-
-    <Button
-        android:id="@+id/btnCall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/btn_call"
-        android:text="@string/call"
-        android:textColor="@color/btn_text"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"/>
+        android:layout_marginRight="16dp">
 
-    <Button
-        android:id="@+id/btnRaise"
+        <ListView
+            android:id="@+id/listViewPlayers"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/firstPlayerName"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="PLAYER_1"-->
+<!--        android:layout_marginTop="400dp"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/firstPlayerMoney"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="10000"-->
+<!--        android:layout_toEndOf="@+id/firstPlayerName"-->
+<!--        android:layout_alignBaseline="@+id/firstPlayerName"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        android:layout_marginRight="16dp"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/firstPlayerBid"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="200"-->
+<!--        android:layout_toEndOf="@+id/firstPlayerMoney"-->
+<!--        android:layout_alignBaseline="@+id/firstPlayerMoney"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/secondPlayerName"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="PLAYER_2"-->
+<!--        android:layout_below="@+id/firstPlayerName"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/secondPlayerMoney"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="10000"-->
+<!--        android:layout_below="@+id/firstPlayerMoney"-->
+<!--        android:layout_toEndOf="@+id/secondPlayerName"-->
+<!--        android:layout_alignBaseline="@+id/secondPlayerName"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        android:layout_marginRight="16dp"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/secondPlayerBid"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="200"-->
+<!--        android:layout_toEndOf="@+id/secondPlayerMoney"-->
+<!--        android:layout_alignBaseline="@+id/secondPlayerMoney"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/thirdPlayerName"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="PLAYER_3"-->
+<!--        android:layout_below="@+id/secondPlayerName"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/thirdPlayerMoney"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="10000"-->
+<!--        android:layout_below="@+id/secondPlayerMoney"-->
+<!--        android:layout_toEndOf="@+id/thirdPlayerName"-->
+<!--        android:layout_alignBaseline="@+id/thirdPlayerName"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        android:layout_marginRight="16dp"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/pool"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="0"-->
+<!--        android:layout_below="@+id/thirdPlayerBid"-->
+<!--        android:layout_alignStart="@+id/thirdPlayerBid"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/thirdPlayerBid"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="200"-->
+<!--        android:layout_toEndOf="@+id/thirdPlayerMoney"-->
+<!--        android:layout_alignBaseline="@+id/thirdPlayerMoney"/>-->
+
+    <RelativeLayout
+        android:id="@+id/layoutPool"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/btn_raise"
-        android:text="@string/raise"
-        android:textColor="@color/btn_text"
-        android:layout_toEndOf="@+id/btnCall"
-        android:layout_alignBaseline="@+id/btnCall"/>
+        android:layout_alignStart="@+id/layoutPlayers"
+        android:layout_alignTop="@+id/layoutButtons"
+        android:layout_toStartOf="@+id/layoutButtons">
 
-    <Button
-        android:id="@+id/btnFold"
+        <TextView
+            android:id="@+id/textViewPoolLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pool:"
+            android:textSize="20sp"
+            android:textColor="@color/labels"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:id="@+id/textViewPool"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="20sp"
+            android:textColor="@color/labels"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/textViewPoolLabel"
+            android:layout_marginStart="8dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutCards"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/btn_fold"
-        android:text="@string/fold"
-        android:textColor="@color/btn_text"
-        android:layout_below="@+id/btnCheck"
-        android:layout_centerInParent="true"
-        android:layout_marginEnd="16dp"/>
+        android:layout_alignBottom="@+id/layoutButtons"
+        android:layout_alignStart="@+id/layoutPlayers"
+        android:layout_below="@+id/layoutPool">
 
-    <Button
-        android:id="@+id/btnAllIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/btn_all_in"
-        android:text="@string/all_in"
-        android:textColor="@color/btn_text"
-        android:layout_toEndOf="@+id/btnFold"
-        android:layout_alignBaseline="@+id/btnFold"/>
+        <ImageView
+            android:id="@+id/card1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/player_s_first_card"
+            android:src="@drawable/c2" />
 
-    <ImageView
-        android:id="@+id/card1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/c2"
-        android:layout_below="@id/btnFold"
-        android:contentDescription="@string/player_s_first_card" />
+        <ImageView
+            android:id="@+id/card2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/card1"
+            android:contentDescription="@string/player_s_second_card"
+            android:src="@drawable/c3" />
 
-    <ImageView
-        android:id="@+id/card2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/c3"
-        android:layout_below="@id/card1"
-        android:contentDescription="@string/player_s_second_card" />
+    </RelativeLayout>
 
-    <EditText
-        android:id="@+id/editTextMessage"
-        android:layout_width="200dp"
+    <RelativeLayout
+        android:id="@+id/layoutButtons"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/btnSend"
+        android:layout_toEndOf="@id/layoutCards"
+        android:layout_below="@+id/layoutPlayers"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:autofillHints="no"
-        android:inputType="text"
-        tools:ignore="LabelFor" />
+        android:layout_marginEnd="16dp">
 
-    <Button
-        android:id="@+id/btnSend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/btn_bg_color"
-        android:text="@string/send"
-        android:textColor="@color/btn_text"
-        tools:ignore="RelativeOverlap" />
+        <EditText
+            android:id="@+id/editTextAmount"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:autofillHints="no"
+            android:inputType="number"
+            tools:ignore="LabelFor"/>
+
+        <Button
+            android:id="@+id/btnRaise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/btn_raise"
+            android:text="@string/raise"
+            android:textColor="@color/btn_text"
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap" />
+
+        <Button
+            android:id="@+id/btnCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/btn_check"
+            android:text="@string/check"
+            android:textColor="@color/btn_text"
+            android:layout_below="@+id/editTextAmount"
+            android:layout_alignStart="@+id/editTextAmount"/>
+
+        <Button
+            android:id="@+id/btnCall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/btn_call"
+            android:text="@string/call"
+            android:textColor="@color/btn_text"
+            android:layout_below="@+id/btnRaise"
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap" />
+
+        <Button
+            android:id="@+id/btnFold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/btn_fold"
+            android:text="@string/fold"
+            android:textColor="@color/btn_text"
+            android:layout_below="@+id/btnCheck"
+            android:layout_alignStart="@+id/btnCheck"
+            android:layout_marginEnd="16dp"/>
+
+        <Button
+            android:id="@+id/btnAllIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/btn_all_in"
+            android:text="@string/all_in"
+            android:textColor="@color/btn_text"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBaseline="@+id/btnFold"/>
+
+    </RelativeLayout>
+
+<!--    <EditText-->
+<!--        android:id="@+id/editTextMessage"-->
+<!--        android:layout_width="200dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignBaseline="@id/btnSend"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:autofillHints="no"-->
+<!--        android:inputType="text"-->
+<!--        tools:ignore="LabelFor" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btnSend"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:backgroundTint="@color/btn_bg_color"-->
+<!--        android:text="@string/send"-->
+<!--        android:textColor="@color/btn_text"-->
+<!--        tools:ignore="RelativeOverlap" />-->
 
 </RelativeLayout>

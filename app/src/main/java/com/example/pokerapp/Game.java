@@ -238,7 +238,7 @@ public class Game {
         if (winnerList.size() == 1) {
             winnerList.get(0).addWonMoney(pool);
         }
-//        ending();
+        ending();
     }
 
     public void ending() {
