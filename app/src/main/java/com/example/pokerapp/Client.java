@@ -24,6 +24,7 @@ public class Client implements Runnable {
     private final Handler handler;
     private final Context context;
     private final MainActivity mainActivity;
+    private GameRoomActivity gameRoomActivity;
 
     private final ArrayList<String> playerNameList = new ArrayList<>();
 
@@ -69,6 +70,10 @@ public class Client implements Runnable {
                             playerNameList.clear();
                             playerNameList.addAll(Arrays.asList(msg.split(" ")));
                             handler.post(() -> mainActivity.setPlayerNameList(playerNameList));
+                        } else if (msg.startsWith("/order")) {
+                            msg = msg.substring(7);
+                            ArrayList<String> order = (ArrayList<String>) Arrays.asList(msg.split(" "));
+                            handler.post(() -> gameRoomActivity.createGame(order));
                         } else {
                             handler.post(() -> Toast.makeText(context, finalMsg, Toast.LENGTH_SHORT).show());
                         }
@@ -85,5 +90,9 @@ public class Client implements Runnable {
         public void sendMessage(String msg) {
             new Thread(() -> out.println(msg)).start();
         }
+    }
+
+    public void setGameRoomActivity(GameRoomActivity gameRoomActivity) {
+        this.gameRoomActivity = gameRoomActivity;
     }
 }

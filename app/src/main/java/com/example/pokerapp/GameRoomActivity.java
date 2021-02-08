@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 public class GameRoomActivity extends AppCompatActivity {
 
     private EditText editTextMessage;
@@ -35,11 +37,22 @@ public class GameRoomActivity extends AppCompatActivity {
         });
     }
 
+    public void createGame(ArrayList<String> playerList) {
+        Game game = new Game();
+        for (String name: playerList) {
+            game.addPlayer(new Player(name));
+        }
+    }
+
     private void loadData() {
         if (ClientHolder.getClient() != null) {
             client = ClientHolder.getClient();
+            client.setGameRoomActivity(GameRoomActivity.this);
         } else {
             server = ServerHolder.getServer();
+            server.setGameRoomActivity(GameRoomActivity.this);
+            server.shufflePlayers();
+            server.sendOrderedPlayers();
         }
     }
 }

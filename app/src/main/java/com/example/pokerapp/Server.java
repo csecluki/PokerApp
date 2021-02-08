@@ -11,6 +11,9 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 public class Server implements Runnable {
 
@@ -21,8 +24,10 @@ public class Server implements Runnable {
     private final Handler handler;
     private final Context context;
     private final MainActivity mainActivity;
+    private GameRoomActivity gameRoomActivity;
 
     private final ArrayList<PrintWriter> clientList = new ArrayList<>();
+    private final HashMap<PrintWriter, String> playerOrder = new HashMap<>();
 
     private int playerNumber = 1;
     private final ArrayList<String> playerNameList = new ArrayList<>();
@@ -114,5 +119,28 @@ public class Server implements Runnable {
             handler.post(() -> mainActivity.setPlayerNameList(playerNameList));
             broadcastMessage("/nameList" + nameString);
         }
+    }
+
+    public void shufflePlayers() {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < playerNameList.size(); i++) {
+            list.add(i);
+        }
+        Collections.shuffle(list);
+        for (int i = 0; i < list.size(); i++) {
+            playerOrder.put(clientList.get(i), playerNameList.get(i));
+        }
+    }
+
+    public void sendOrderedPlayers() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String name: playerOrder.values()) {
+            stringBuilder.append(" ").append(name);
+        }
+        broadcastMessage("/order" + stringBuilder);
+    }
+
+    public void setGameRoomActivity(GameRoomActivity gameRoomActivity) {
+        this.gameRoomActivity = gameRoomActivity;
     }
 }
