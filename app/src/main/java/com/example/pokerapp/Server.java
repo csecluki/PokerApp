@@ -29,6 +29,7 @@ public class Server implements Runnable {
     private final ArrayList<PrintWriter> clientList = new ArrayList<>();
     private final HashMap<PrintWriter, String> playerOrder = new HashMap<>();
 
+    private String name;
     private int playerNumber = 1;
     private final ArrayList<String> playerNameList = new ArrayList<>();
 
@@ -45,6 +46,7 @@ public class Server implements Runnable {
             sender = new Sender();
             clientList.add(null);
             playerNameList.add("Player_0");
+            setName("Player_0");
 
             while (true) {
                 new Thread(new SocketHandler(serverSocket.accept())).start();
@@ -98,6 +100,7 @@ public class Server implements Runnable {
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
+                playerNameList.remove(clientList.indexOf(out));
                 clientList.remove(out);
                 handler.post(() -> Toast.makeText(context, "Client disconnected. Current number of client: " + clientList.size(), Toast.LENGTH_SHORT).show());
             }
@@ -143,5 +146,9 @@ public class Server implements Runnable {
 
     public void setGameRoomActivity(GameRoomActivity gameRoomActivity) {
         this.gameRoomActivity = gameRoomActivity;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

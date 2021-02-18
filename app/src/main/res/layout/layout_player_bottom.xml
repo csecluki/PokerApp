@@ -14,7 +14,7 @@
         android:id="@+id/card1"
         android:layout_width="45dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/back"
+        android:src="@drawable/empty"
         android:adjustViewBounds="true"
         android:layout_below="@+id/bid"
         android:contentDescription="@string/player_card" />
@@ -23,7 +23,7 @@
         android:id="@+id/card2"
         android:layout_width="45dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/back"
+        android:src="@drawable/empty"
         android:adjustViewBounds="true"
         android:layout_toEndOf="@+id/card1"
         android:layout_marginStart="2dp"
