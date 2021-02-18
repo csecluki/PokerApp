@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/bid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="200"
+        android:layout_centerHorizontal="true"
+        style="@style/playerInfoBid"/>
+
+    <ImageView
+        android:id="@+id/card1"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/back"
+        android:adjustViewBounds="true"
+        android:layout_below="@+id/bid"
+        android:contentDescription="@string/player_card" />
+
+    <ImageView
+        android:id="@+id/card2"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/back"
+        android:adjustViewBounds="true"
+        android:layout_toEndOf="@+id/card1"
+        android:layout_marginStart="2dp"
+        android:layout_alignBottom="@+id/card1"
+        android:contentDescription="@string/player_card" />
+
+    <TextView
+        android:id="@+id/textViewTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10000"
+        android:layout_below="@id/card1"
+        android:layout_centerHorizontal="true"
+        style="@style/playerInfoTotalMoney"/>
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NAME"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/textViewTotal"
+        style="@style/playerInfoName"/>
+
+</RelativeLayout>

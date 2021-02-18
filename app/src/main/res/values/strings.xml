@@ -20,5 +20,7 @@
     <string name="all_in">AllIn</string>
     <string name="player_s_first_card">Player\'s first card</string>
     <string name="player_s_second_card">Player\'s second card</string>
+    <string name="pool">Pool:</string>
+    <string name="player_card">Player\'s card</string>
 
 </resources>

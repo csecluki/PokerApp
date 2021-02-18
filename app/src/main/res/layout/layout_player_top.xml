@@ -11,7 +11,7 @@
         style="@style/playerInfoName"/>
 
     <TextView
-        android:id="@+id/total"
+        android:id="@+id/textViewTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="10000"
@@ -21,21 +21,23 @@
 
     <ImageView
         android:id="@+id/card1"
-        android:layout_width="55dp"
+        android:layout_width="45dp"
         android:layout_height="wrap_content"
         android:src="@drawable/back"
         android:adjustViewBounds="true"
-        android:layout_below="@+id/total"/>
+        android:layout_below="@+id/textViewTotal"
+        android:contentDescription="@string/player_card" />
 
     <ImageView
         android:id="@+id/card2"
-        android:layout_width="55dp"
+        android:layout_width="45dp"
         android:layout_height="wrap_content"
         android:src="@drawable/back"
         android:adjustViewBounds="true"
         android:layout_toEndOf="@+id/card1"
         android:layout_marginStart="2dp"
-        android:layout_alignBottom="@+id/card1"/>
+        android:layout_alignBottom="@+id/card1"
+        android:contentDescription="@string/player_card" />
 
     <TextView
         android:id="@+id/bid"

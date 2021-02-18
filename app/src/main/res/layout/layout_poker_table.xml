@@ -3,41 +3,40 @@
     android:layout_width="match_parent" android:layout_height="wrap_content">
 
         <RelativeLayout
-            android:id="@+id/layoutPlayers"
+            android:id="@+id/layoutPlayersTop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
                 <include android:id="@+id/player1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    layout="@layout/layout_player"/>
+                    android:layout_alignParentStart="true"
+                    layout="@layout/layout_player_top"/>
                 <include android:id="@+id/player2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginStart="16dp"
-                    layout="@layout/layout_player"/>
+                    layout="@layout/layout_player_top"/>
                 <include android:id="@+id/player3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginStart="16dp"
-                    layout="@layout/layout_player"/>
+                    layout="@layout/layout_player_top"/>
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/layoutPool"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/layoutPlayers"
+            android:layout_below="@+id/layoutPlayersTop"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="8dp">
 
                 <TextView
                     android:id="@+id/textViewPoolLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pool:"
+                    android:text="@string/pool"
                     style="@style/defaultStyle"
                     android:layout_centerVertical="true"
                     android:layout_alignParentStart="true"/>
@@ -60,47 +59,76 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/layoutPool"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="4dp">
 
                 <ImageView
                     android:id="@+id/commonCard1"
-                    android:layout_width="70dp"
+                    android:layout_width="55dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/empty"
                     android:layout_toStartOf="@id/commonCard2"
-                    android:layout_marginEnd="8dp"/>
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@string/player_card" />
 
                 <ImageView
                     android:id="@+id/commonCard2"
-                    android:layout_width="70dp"
+                    android:layout_width="55dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/empty"
-                    android:layout_toStartOf="@id/commonCard3"/>
+                    android:layout_toStartOf="@id/commonCard3"
+                    android:contentDescription="@string/player_card" />
 
                 <ImageView
                     android:id="@+id/commonCard3"
-                    android:layout_width="70dp"
+                    android:layout_width="55dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/empty"
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"/>
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@string/player_card" />
 
                 <ImageView
                     android:id="@+id/commonCard4"
-                    android:layout_width="70dp"
+                    android:layout_width="55dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/empty"
-                    android:layout_toEndOf="@id/commonCard3"/>
+                    android:layout_toEndOf="@id/commonCard3"
+                    android:contentDescription="@string/player_card" />
 
                 <ImageView
                     android:id="@+id/commonCard5"
-                    android:layout_width="70dp"
+                    android:layout_width="55dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/empty"
                     android:layout_toEndOf="@id/commonCard4"
-                    android:layout_marginStart="8dp"/>
+                    android:layout_marginStart="8dp"
+                    android:contentDescription="@string/player_card" />
 
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layoutPlayersBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layoutCommonCards"
+            android:layout_marginTop="16dp">
+
+                <include android:id="@+id/player4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    layout="@layout/layout_player_bottom"/>
+                <include android:id="@+id/player5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    layout="@layout/layout_player_bottom"/>
+                <include android:id="@+id/player6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    layout="@layout/layout_player_bottom"/>
         </RelativeLayout>
 
 </RelativeLayout>
