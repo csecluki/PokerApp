@@ -14,117 +14,19 @@
         android:scaleType="fitXY"
         android:contentDescription="@string/themeDesc" />
 
-    <RelativeLayout
-        android:id="@+id/layoutPlayers"
+    <include android:id="@+id/table"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp">
-
-        <ListView
-            android:id="@+id/listViewPlayers"
-            android:layout_width="wrap_content"
-            android:layout_height="300dp"
-            android:layout_centerHorizontal="true"/>
-
-    </RelativeLayout>
-
-
-
-<!--    <TextView-->
-<!--        android:id="@+id/firstPlayerName"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="PLAYER_1"-->
-<!--        android:layout_marginTop="400dp"/>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/firstPlayerMoney"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="10000"-->
-<!--        android:layout_toEndOf="@+id/firstPlayerName"-->
-<!--        android:layout_alignBaseline="@+id/firstPlayerName"-->
-<!--        android:layout_marginLeft="16dp"-->
-<!--        android:layout_marginRight="16dp"/>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/firstPlayerBid"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="200"-->
-<!--        android:layout_toEndOf="@+id/firstPlayerMoney"-->
-<!--        android:layout_alignBaseline="@+id/firstPlayerMoney"/>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/secondPlayerName"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="PLAYER_2"-->
-<!--        android:layout_below="@+id/firstPlayerName"/>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/secondPlayerMoney"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="10000"-->
-<!--        android:layout_below="@+id/firstPlayerMoney"-->
-<!--        android:layout_toEndOf="@+id/secondPlayerName"-->
-<!--        android:layout_alignBaseline="@+id/secondPlayerName"-->
-<!--        android:layout_marginLeft="16dp"-->
-<!--        android:layout_marginRight="16dp"/>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/secondPlayerBid"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="200"-->
-<!--        android:layout_toEndOf="@+id/secondPlayerMoney"-->
-<!--        android:layout_alignBaseline="@+id/secondPlayerMoney"/>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/thirdPlayerName"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="PLAYER_3"-->
-<!--        android:layout_below="@+id/secondPlayerName"/>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/thirdPlayerMoney"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="10000"-->
-<!--        android:layout_below="@+id/secondPlayerMoney"-->
-<!--        android:layout_toEndOf="@+id/thirdPlayerName"-->
-<!--        android:layout_alignBaseline="@+id/thirdPlayerName"-->
-<!--        android:layout_marginLeft="16dp"-->
-<!--        android:layout_marginRight="16dp"/>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/pool"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="0"-->
-<!--        android:layout_below="@+id/thirdPlayerBid"-->
-<!--        android:layout_alignStart="@+id/thirdPlayerBid"/>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/thirdPlayerBid"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="200"-->
-<!--        android:layout_toEndOf="@+id/thirdPlayerMoney"-->
-<!--        android:layout_alignBaseline="@+id/thirdPlayerMoney"/>-->
+        layout="@layout/layout_poker_table"/>
 
     <RelativeLayout
         android:id="@+id/layoutPool"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/layoutPlayers"
+        android:layout_alignStart="@+id/table"
         android:layout_alignTop="@+id/layoutButtons"
         android:layout_toStartOf="@+id/layoutButtons">
 
@@ -133,9 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pool:"
-            android:textSize="20sp"
-            android:textColor="@color/labels"
-            android:textStyle="bold"
+            style="@style/defaultStyle"
             android:layout_centerVertical="true"
             android:layout_alignParentStart="true"/>
 
@@ -144,9 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
-            android:textSize="20sp"
-            android:textColor="@color/labels"
-            android:textStyle="bold"
+            style="@style/defaultStyle"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/textViewPoolLabel"
             android:layout_marginStart="8dp"/>
@@ -158,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/layoutButtons"
-        android:layout_alignStart="@+id/layoutPlayers"
+        android:layout_alignStart="@+id/table"
         android:layout_below="@+id/layoutPool">
 
         <ImageView
@@ -187,7 +85,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/layoutCards"
-        android:layout_below="@+id/layoutPlayers"
+        android:layout_below="@+id/table"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp">

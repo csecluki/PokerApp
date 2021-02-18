@@ -21,4 +21,7 @@
     <color name="listView">#316327</color>
 
     <color name="labels">#E6BF49</color>
+    <color name="playerName">#36D2D6</color>
+    <color name="playerTotalMoney">#37EA87</color>
+    <color name="playerBid">#2FCAE6</color>
 </resources>
