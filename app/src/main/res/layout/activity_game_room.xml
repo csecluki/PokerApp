@@ -17,47 +17,22 @@
     <include android:id="@+id/table"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
         layout="@layout/layout_poker_table"/>
 
     <RelativeLayout
-        android:id="@+id/layoutPool"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/table"
-        android:layout_alignTop="@+id/layoutButtons"
-        android:layout_toStartOf="@+id/layoutButtons">
-
-        <TextView
-            android:id="@+id/textViewPoolLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pool:"
-            style="@style/defaultStyle"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"/>
-
-        <TextView
-            android:id="@+id/textViewPool"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            style="@style/defaultStyle"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/textViewPoolLabel"
-            android:layout_marginStart="8dp"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
         android:id="@+id/layoutCards"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/layoutButtons"
         android:layout_alignStart="@+id/table"
-        android:layout_below="@+id/layoutPool">
+        android:layout_below="@+id/table"
+        android:layout_alignBottom="@id/layoutButtons"
+        android:layout_alignTop="@id/layoutButtons"
+        android:layout_marginEnd="16dp">
 
         <ImageView
             android:id="@+id/card1"
@@ -65,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="8dp"
             android:contentDescription="@string/player_s_first_card"
             android:src="@drawable/c2" />
 
@@ -82,19 +57,19 @@
 
     <RelativeLayout
         android:id="@+id/layoutButtons"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/layoutCards"
         android:layout_below="@+id/table"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp">
 
         <EditText
             android:id="@+id/editTextAmount"
             android:layout_width="85dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/btnRaise"
+            android:layout_marginEnd="8dp"
             android:autofillHints="no"
             android:inputType="number"
             tools:ignore="LabelFor"/>
@@ -117,7 +92,8 @@
             android:text="@string/check"
             android:textColor="@color/btn_text"
             android:layout_below="@+id/editTextAmount"
-            android:layout_alignStart="@+id/editTextAmount"/>
+            android:layout_toStartOf="@+id/btnCall"
+            android:layout_marginEnd="8dp"/>
 
         <Button
             android:id="@+id/btnCall"
@@ -138,8 +114,8 @@
             android:text="@string/fold"
             android:textColor="@color/btn_text"
             android:layout_below="@+id/btnCheck"
-            android:layout_alignStart="@+id/btnCheck"
-            android:layout_marginEnd="16dp"/>
+            android:layout_toStartOf="@+id/btnAllIn"
+            android:layout_marginEnd="8dp"/>
 
         <Button
             android:id="@+id/btnAllIn"

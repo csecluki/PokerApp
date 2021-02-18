@@ -2,21 +2,76 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="wrap_content">
 
-        <include android:id="@+id/player1"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/layoutPlayers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+                <include android:id="@+id/player1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    layout="@layout/layout_player"/>
+                <include android:id="@+id/player2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="16dp"
+                    layout="@layout/layout_player"/>
+                <include android:id="@+id/player3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="16dp"
+                    layout="@layout/layout_player"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/layoutCommonCards"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/layout_player"/>
-        <include android:id="@+id/player2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="16dp"
-            layout="@layout/layout_player"/>
-        <include android:id="@+id/player3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="16dp"
-            layout="@layout/layout_player"/>
+            android:layout_below="@id/layoutPlayers"
+            android:layout_marginTop="16dp">
+
+                <ImageView
+                    android:id="@+id/commonCard1"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/empty"
+                    android:layout_toStartOf="@id/commonCard2"
+                    android:layout_marginEnd="8dp"/>
+
+                <ImageView
+                    android:id="@+id/commonCard2"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/empty"
+                    android:layout_toStartOf="@id/commonCard3"/>
+
+                <ImageView
+                    android:id="@+id/commonCard3"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/empty"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"/>
+
+                <ImageView
+                    android:id="@+id/commonCard4"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/empty"
+                    android:layout_toEndOf="@id/commonCard3"/>
+
+                <ImageView
+                    android:id="@+id/commonCard5"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/empty"
+                    android:layout_toEndOf="@id/commonCard4"
+                    android:layout_marginStart="8dp"/>
+
+        </RelativeLayout>
 
 </RelativeLayout>
