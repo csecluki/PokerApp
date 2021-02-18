@@ -72,7 +72,7 @@ public class Client implements Runnable {
                             handler.post(() -> mainActivity.setPlayerNameList(playerNameList));
                         } else if (msg.startsWith("/order")) {
                             msg = msg.substring(7);
-                            ArrayList<String> order = (ArrayList<String>) Arrays.asList(msg.split(" "));
+                            ArrayList<String> order = new ArrayList<>(Arrays.asList(msg.split(" ")));
                             handler.post(() -> gameRoomActivity.createGame(order));
                         } else {
                             handler.post(() -> Toast.makeText(context, finalMsg, Toast.LENGTH_SHORT).show());

@@ -43,6 +43,7 @@ public class Server implements Runnable {
         try {
             ServerSocket serverSocket = new ServerSocket(PORT);
             sender = new Sender();
+            clientList.add(null);
             playerNameList.add("Player_0");
 
             while (true) {
@@ -85,7 +86,7 @@ public class Server implements Runnable {
                 while ((msg = in.readLine()) != null) {
                     if (!msg.isEmpty()) {
                         if (msg.startsWith("/name")) {
-                            playerNameList.set(clientList.indexOf(out) + 1, msg.substring(6));
+                            playerNameList.set(clientList.indexOf(out), msg.substring(6));
                             sender.sendNames();
                         } else {
                             String finalMsg = msg;
@@ -107,7 +108,7 @@ public class Server implements Runnable {
 
         public void broadcastMessage(String msg) {
             for (PrintWriter client: clientList) {
-                new Thread(() -> client.println(msg)).start();
+                if (client != null) new Thread(() -> client.println(msg)).start();
             }
         }
 
