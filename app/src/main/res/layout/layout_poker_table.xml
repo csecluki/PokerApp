@@ -25,13 +25,42 @@
                     layout="@layout/layout_player"/>
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/layoutPool"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layoutPlayers"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/textViewPoolLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pool:"
+                    style="@style/defaultStyle"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"/>
+
+                <TextView
+                    android:id="@+id/textViewPool"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    style="@style/defaultStyle"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/textViewPoolLabel"
+                    android:layout_marginStart="8dp"/>
+
+        </RelativeLayout>
+
 
         <RelativeLayout
             android:id="@+id/layoutCommonCards"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/layoutPlayers"
-            android:layout_marginTop="16dp">
+            android:layout_below="@id/layoutPool"
+            android:layout_marginTop="8dp">
 
                 <ImageView
                     android:id="@+id/commonCard1"
