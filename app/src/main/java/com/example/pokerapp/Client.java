@@ -103,6 +103,9 @@ public class Client implements Runnable {
 
     public void setName(String name) {
         this.name = name;
-        handler.post(() -> Toast.makeText(context, name, Toast.LENGTH_SHORT).show());
+    }
+
+    public String getName() {
+        return name;
     }
 }

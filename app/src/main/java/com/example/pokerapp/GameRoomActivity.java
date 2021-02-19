@@ -33,6 +33,8 @@ public class GameRoomActivity extends AppCompatActivity {
     private Server server;
     private Client client;
 
+    private String name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,20 +66,7 @@ public class GameRoomActivity extends AppCompatActivity {
         player6 = findViewById(R.id.player6);
         views.add(player6);
 
-
-//        Button btnSend = findViewById(R.id.btnSend);
-//        editTextMessage = findViewById(R.id.editTextMessage);
-
         loadData();
-
-//        btnSend.setOnClickListener(view -> {
-//            try {
-//                client.sendMessage(editTextMessage.getText().toString());
-//            } catch (NullPointerException e){
-//                server.broadcastMessage(editTextMessage.getText().toString());
-//            }
-//            editTextMessage.setText("");
-//        });
     }
 
     public void createGame(ArrayList<String> orderedPlayerList) {
@@ -105,12 +94,18 @@ public class GameRoomActivity extends AppCompatActivity {
         if (ClientHolder.getClient() != null) {
             client = ClientHolder.getClient();
             client.setGameRoomActivity(GameRoomActivity.this);
+            setName(client.getName());
         } else {
             server = ServerHolder.getServer();
             server.setGameRoomActivity(GameRoomActivity.this);
+            setName(server.getName());
             ArrayList<String> orderedPlayerList = server.shufflePlayers();
             server.sendOrderedPlayers();
             createGame(orderedPlayerList);
         }
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
