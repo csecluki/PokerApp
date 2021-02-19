@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/btn_raise"
             android:text="@string/raise"
-            android:textColor="@color/btn_text"
+            android:textColor="@color/btn_text_color"
             android:layout_alignParentEnd="true"
             tools:ignore="RelativeOverlap" />
 
@@ -90,7 +90,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/btn_check"
             android:text="@string/check"
-            android:textColor="@color/btn_text"
+            android:textColor="@color/btn_text_color"
             android:layout_below="@+id/editTextAmount"
             android:layout_toStartOf="@+id/btnCall"
             android:layout_marginEnd="8dp"/>
@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/btn_call"
             android:text="@string/call"
-            android:textColor="@color/btn_text"
+            android:textColor="@color/btn_text_color"
             android:layout_below="@+id/btnRaise"
             android:layout_alignParentEnd="true"
             tools:ignore="RelativeOverlap" />
@@ -112,7 +112,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/btn_fold"
             android:text="@string/fold"
-            android:textColor="@color/btn_text"
+            android:textColor="@color/btn_text_color"
             android:layout_below="@+id/btnCheck"
             android:layout_toStartOf="@+id/btnAllIn"
             android:layout_marginEnd="8dp"/>
@@ -123,7 +123,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/btn_all_in"
             android:text="@string/all_in"
-            android:textColor="@color/btn_text"
+            android:textColor="@color/btn_text_color"
             android:layout_alignParentEnd="true"
             android:layout_alignBaseline="@+id/btnFold"/>
 

@@ -8,20 +8,20 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="btn_enabled">#CA6726</color>
-    <color name="btn_disabled">#555555</color>
-    <color name="btn_text">#424242</color>
+    <color name="btn_enabled_color">#CA6726</color>
+    <color name="btn_disabled_color">#555555</color>
+    <color name="btn_text_color">#424242</color>
 
-    <color name="btn_check">#DF6100</color>
-    <color name="btn_call">#008DEC</color>
-    <color name="btn_raise">#44B100</color>
-    <color name="btn_fold">#DD0000</color>
-    <color name="btn_all_in">#CCC100</color>
+    <color name="btn_check_color">#DF6100</color>
+    <color name="btn_call_color">#008DEC</color>
+    <color name="btn_raise_color">#44B100</color>
+    <color name="btn_fold_color">#DD0000</color>
+    <color name="btn_all_in_color">#CCC100</color>
 
-    <color name="listView">#316327</color>
+    <color name="list_view_bg_color">#316327</color>
 
-    <color name="labels">#E6BF49</color>
-    <color name="playerName">#36D2D6</color>
-    <color name="playerTotalMoney">#37EA87</color>
-    <color name="playerBid">#2FCAE6</color>
+    <color name="labels_color">#E6BF49</color>
+    <color name="player_name_color">#36D2D6</color>
+    <color name="player_total_money_color">#37EA87</color>
+    <color name="player_bid_color">#2FCAE6</color>
 </resources>

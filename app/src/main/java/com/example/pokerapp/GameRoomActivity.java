@@ -15,6 +15,13 @@ public class GameRoomActivity extends AppCompatActivity {
 
 //    private EditText editTextMessage;
 
+    private EditText editTextAmount;
+    private Button btnRaise;
+    private Button btnCheck;
+    private Button btnCall;
+    private Button btnFold;
+    private Button btnAllIn;
+
     private ArrayList<View> views = new ArrayList<>();
     private View player1;
     private View player2;
@@ -31,6 +38,18 @@ public class GameRoomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_room);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        editTextAmount = findViewById(R.id.editTextAmount);
+        btnRaise = findViewById(R.id.btnRaise);
+        btnRaise.setEnabled(false);
+        btnCheck = findViewById(R.id.btnCheck);
+        btnCheck.setEnabled(false);
+        btnCall = findViewById(R.id.btnCall);
+        btnCall.setEnabled(false);
+        btnFold = findViewById(R.id.btnFold);
+        btnFold.setEnabled(false);
+        btnAllIn = findViewById(R.id.btnAllIn);
+        btnAllIn.setEnabled(false);
 
         player1 = findViewById(R.id.player1);
         views.add(player1);

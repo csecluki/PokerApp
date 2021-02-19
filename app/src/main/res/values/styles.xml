@@ -2,25 +2,25 @@
 <resources>
     <style name="defaultStyle">
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/labels</item>
+        <item name="android:textColor">@color/labels_color</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="playerInfoName">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/playerName</item>
+        <item name="android:textColor">@color/player_name_color</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="playerInfoTotalMoney">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/playerTotalMoney</item>
+        <item name="android:textColor">@color/player_total_money_color</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="playerInfoBid">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/playerBid</item>
+        <item name="android:textColor">@color/player_bid_color</item>
         <item name="android:textStyle">bold</item>
     </style>
 </resources>
