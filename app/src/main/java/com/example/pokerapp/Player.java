@@ -1,5 +1,7 @@
 package com.example.pokerapp;
 
+import android.view.View;
+
 import java.util.ArrayList;
 
 public class Player {
@@ -12,6 +14,8 @@ public class Player {
     private int currentBid;
     private int totalBid;
     private int balance;
+
+    private View view;
 
     public Player(String name) {
         this.name = name;
@@ -102,5 +106,13 @@ public class Player {
 
     public int getBalance() {
         return balance;
+    }
+
+    public void setView(View view) {
+        this.view = view;
+    }
+
+    public View getView() {
+        return view;
     }
 }

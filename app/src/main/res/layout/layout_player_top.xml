@@ -6,15 +6,13 @@
         android:id="@+id/textViewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NAME"
         android:layout_centerHorizontal="true"
         style="@style/playerInfoName"/>
 
     <TextView
-        android:id="@+id/textViewTotal"
+        android:id="@+id/textViewBalance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="10000"
         android:layout_below="@+id/textViewName"
         android:layout_centerHorizontal="true"
         style="@style/playerInfoTotalMoney"/>
@@ -23,16 +21,16 @@
         android:id="@+id/card1"
         android:layout_width="45dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/empty"
+        android:src="@drawable/empty_player"
         android:adjustViewBounds="true"
-        android:layout_below="@+id/textViewTotal"
+        android:layout_below="@+id/textViewBalance"
         android:contentDescription="@string/player_card" />
 
     <ImageView
         android:id="@+id/card2"
         android:layout_width="45dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/empty"
+        android:src="@drawable/empty_player"
         android:adjustViewBounds="true"
         android:layout_toEndOf="@+id/card1"
         android:layout_marginStart="2dp"
@@ -43,7 +41,6 @@
         android:id="@+id/bid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="200"
         android:layout_below="@id/card1"
         android:layout_marginTop="8dp"
         android:layout_centerHorizontal="true"

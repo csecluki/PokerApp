@@ -125,7 +125,7 @@ public class Server implements Runnable {
         }
     }
 
-    public void shufflePlayers() {
+    public ArrayList<String> shufflePlayers() {
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < playerNameList.size(); i++) {
             list.add(i);
@@ -134,6 +134,7 @@ public class Server implements Runnable {
         for (int i = 0; i < list.size(); i++) {
             playerOrder.put(clientList.get(i), playerNameList.get(i));
         }
+        return new ArrayList<>(playerOrder.values());
     }
 
     public void sendOrderedPlayers() {
