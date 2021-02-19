@@ -1,6 +1,7 @@
 package com.example.pokerapp;
 
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,9 @@ public class Player {
     private int balance;
 
     private View view;
+    private TextView textViewName;
+    private TextView textViewBalance;
+    private TextView textViewBid;
 
     public Player(String name) {
         this.name = name;
@@ -114,5 +118,29 @@ public class Player {
 
     public View getView() {
         return view;
+    }
+
+    public void setTextViewName(TextView textViewName) {
+        this.textViewName = textViewName;
+    }
+
+    public void labelTextViewName(String name) {
+        textViewName.setText(name);
+    }
+
+    public void setTextViewBalance(TextView textViewBalance) {
+        this.textViewBalance = textViewBalance;
+    }
+
+    public void labelTextViewBalance(String balance) {
+        textViewBalance.setText(balance);
+    }
+
+    public void setTextViewBid(TextView textViewBid) {
+        this.textViewBid = textViewBid;
+    }
+
+    public void labelTextViewBid(String bid) {
+        textViewBid.setText(bid);
     }
 }

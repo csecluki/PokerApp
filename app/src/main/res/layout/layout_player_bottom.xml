@@ -3,7 +3,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/bid"
+        android:id="@+id/textViewBid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/empty_player"
         android:adjustViewBounds="true"
-        android:layout_below="@+id/bid"
+        android:layout_below="@+id/textViewBid"
         android:contentDescription="@string/player_card" />
 
     <ImageView

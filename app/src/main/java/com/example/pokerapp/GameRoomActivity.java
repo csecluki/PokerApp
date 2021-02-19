@@ -67,8 +67,18 @@ public class GameRoomActivity extends AppCompatActivity {
             Player player = new Player(orderedPlayerList.get(i));
             game.addPlayer(player);
             player.setView(views.get(i));
+
             TextView textViewName = player.getView().findViewById(R.id.textViewName);
-            textViewName.setText(player.getName());
+            player.setTextViewName(textViewName);
+            player.labelTextViewName(player.getName());
+
+            TextView textViewBalance = player.getView().findViewById(R.id.textViewBalance);
+            player.setTextViewBalance(textViewBalance);
+            player.labelTextViewBalance(String.valueOf(player.getBalance()));
+
+            TextView textViewBid = player.getView().findViewById(R.id.textViewBid);
+            player.setTextViewBid(textViewBid);
+            player.labelTextViewBid(String.valueOf(player.getCurrentBid()));
         }
     }
 
