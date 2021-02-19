@@ -254,19 +254,6 @@ public class Game {
         startGame();
     }
 
-    public void printInfo() {
-        System.out.println("Player: " + currentPlayer.getName());
-        System.out.println("Hand: " +
-                currentPlayer.getHand().get(0).getValue() +
-                currentPlayer.getHand().get(0).getColor() + " " +
-                currentPlayer.getHand().get(1).getValue() +
-                currentPlayer.getHand().get(1).getColor());
-        System.out.println("Balance: " + currentPlayer.getBalance());
-        System.out.println("Biggest bid: " + getBiggestBid());
-        System.out.println("Player bid: " + currentPlayer.getTotalBid());
-        System.out.println("Pool: " + getPool());
-    }
-
     public ArrayList<Player> getPlayerList() {
         return playerList;
     }

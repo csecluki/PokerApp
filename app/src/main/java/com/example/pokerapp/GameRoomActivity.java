@@ -13,8 +13,6 @@ import java.util.ArrayList;
 
 public class GameRoomActivity extends AppCompatActivity {
 
-//    private EditText editTextMessage;
-
     private EditText editTextAmount;
     private Button btnRaise;
     private Button btnCheck;

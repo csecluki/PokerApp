@@ -25,49 +25,17 @@
         layout="@layout/layout_poker_table"/>
 
     <RelativeLayout
-        android:id="@+id/layoutCards"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/table"
-        android:layout_below="@+id/table"
-        android:layout_alignBottom="@id/layoutButtons"
-        android:layout_alignTop="@id/layoutButtons"
-        android:layout_marginEnd="16dp">
-
-        <ImageView
-            android:id="@+id/card1"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="8dp"
-            android:contentDescription="@string/player_s_first_card"
-            android:src="@drawable/c2" />
-
-        <ImageView
-            android:id="@+id/card2"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/card1"
-            android:contentDescription="@string/player_s_second_card"
-            android:src="@drawable/c3" />
-    </RelativeLayout>
-
-    <RelativeLayout
         android:id="@+id/layoutButtons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/layoutCards"
-        android:layout_below="@+id/table"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp">
+        android:layout_below="@id/table"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp">
 
         <EditText
             android:id="@+id/editTextAmount"
-            android:layout_width="85dp"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:layout_toStartOf="@+id/btnRaise"
             android:layout_marginEnd="8dp"
             android:autofillHints="no"
             android:inputType="number"
@@ -75,55 +43,58 @@
 
         <Button
             android:id="@+id/btnRaise"
-            android:layout_width="wrap_content"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/editTextAmount"
+            android:layout_alignBaseline="@id/editTextAmount"
+            android:layout_marginStart="16dp"
             android:backgroundTint="@color/btn_raise"
             android:text="@string/raise"
             android:textColor="@color/btn_text_color"
-            android:layout_alignParentEnd="true"
             tools:ignore="RelativeOverlap" />
 
         <Button
             android:id="@+id/btnCheck"
-            android:layout_width="wrap_content"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/btn_check"
             android:text="@string/check"
             android:textColor="@color/btn_text_color"
             android:layout_below="@+id/editTextAmount"
-            android:layout_toStartOf="@+id/btnCall"
             android:layout_marginEnd="8dp"/>
 
         <Button
             android:id="@+id/btnCall"
-            android:layout_width="wrap_content"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/btnCheck"
+            android:layout_alignBaseline="@id/btnCheck"
+            android:layout_marginStart="16dp"
             android:backgroundTint="@color/btn_call"
             android:text="@string/call"
             android:textColor="@color/btn_text_color"
             android:layout_below="@+id/btnRaise"
-            android:layout_alignParentEnd="true"
             tools:ignore="RelativeOverlap" />
 
         <Button
             android:id="@+id/btnFold"
-            android:layout_width="wrap_content"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/btn_fold"
             android:text="@string/fold"
             android:textColor="@color/btn_text_color"
             android:layout_below="@+id/btnCheck"
-            android:layout_toStartOf="@+id/btnAllIn"
             android:layout_marginEnd="8dp"/>
 
         <Button
             android:id="@+id/btnAllIn"
-            android:layout_width="wrap_content"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/btnFold"
+            android:layout_alignBaseline="@id/btnFold"
+            android:layout_marginStart="16dp"
             android:backgroundTint="@color/btn_all_in"
             android:text="@string/all_in"
-            android:textColor="@color/btn_text_color"
-            android:layout_alignParentEnd="true"
-            android:layout_alignBaseline="@+id/btnFold"/>
+            android:textColor="@color/btn_text_color"/>
     </RelativeLayout>
 </RelativeLayout>
