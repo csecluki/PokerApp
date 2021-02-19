@@ -50,6 +50,9 @@ public class Client implements Runnable {
     }
 
     public void sendMessage(String msg) {
+        if (msg.startsWith("/name ")) {
+            setName(msg.substring(6));
+        }
         sender.sendMessage(msg);
     }
 
@@ -100,5 +103,6 @@ public class Client implements Runnable {
 
     public void setName(String name) {
         this.name = name;
+        handler.post(() -> Toast.makeText(context, name, Toast.LENGTH_SHORT).show());
     }
 }

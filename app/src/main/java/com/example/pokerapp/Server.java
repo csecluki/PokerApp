@@ -57,8 +57,9 @@ public class Server implements Runnable {
     }
 
     public void broadcastMessage(String msg) {
-        if (msg.startsWith("/name")) {
+        if (msg.startsWith("/name ")) {
             playerNameList.set(0, msg.substring(6));
+            setName(msg.substring(6));
             sender.sendNames();
         } else {
             sender.broadcastMessage(msg);
@@ -151,5 +152,6 @@ public class Server implements Runnable {
 
     public void setName(String name) {
         this.name = name;
+        handler.post(() -> Toast.makeText(context, name, Toast.LENGTH_SHORT).show());
     }
 }

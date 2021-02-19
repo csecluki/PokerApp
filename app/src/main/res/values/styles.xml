@@ -8,7 +8,7 @@
 
     <style name="playerInfoName">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/player_name_color</item>
+        <item name="android:textColor">@color/player_name_default__color</item>
         <item name="android:textStyle">bold</item>
     </style>
 
